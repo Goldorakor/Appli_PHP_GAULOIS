@@ -17,7 +17,7 @@ try {
 
 
 // on créé notre variable requête pour alléger un peu l'écriture (celle présente dans le fichier requetes.sql)
-$sql = "SELECT personnage.nom_personnage, specialite.nom_specialite, lieu.nom_lieu
+$sql = "SELECT personnage.id_personnage, personnage.nom_personnage, specialite.nom_specialite, lieu.nom_lieu
 FROM personnage
 LEFT JOIN specialite ON personnage.id_specialite = specialite.id_specialite
 LEFT JOIN lieu ON personnage.id_lieu = lieu.id_lieu";
@@ -60,7 +60,7 @@ function afficherTableGaulois (array $gaulois) : string {
 
     foreach ($gaulois as $g) {
         $result .= "<tr>
-                        <td><a href='personnage.php?id = $g['id_personnage']'>".$g['nom_personnage']."</a></td>
+                        <td><a href='personnage.php?id=".$g['id_personnage']."'>".$g['nom_personnage']."</a></td>
                         <td>".$g['nom_specialite']."</td>
                         <td>".$g['nom_lieu']."</td>
                     </tr>";
@@ -75,7 +75,11 @@ function afficherTableGaulois (array $gaulois) : string {
 
 echo afficherTableGaulois($gaulois);
 
-// ?id = $g['id_personnage']  un paramètre GET, qui permet de transmettre des informations dans l’URL. Le code <?= $g['id_personnage'] ?> insère dynamiquement la valeur de id_personnage pour chaque Gaulois.
+/* 
+?id = ".$g['id_personnage']."  un paramètre GET, qui permet de transmettre des informations dans l’URL.
+Le code <?= $g['id_personnage'] ?> 
+insère dynamiquement la valeur de id_personnage pour chaque Gaulois.
+*/
 
 ?>
 

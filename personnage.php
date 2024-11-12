@@ -35,7 +35,7 @@ WHERE personnage.id_personnage = $id_persoChoisi";
 $sql2 = "SELECT bataille.nom_bataille, DATE_FORMAT(bataille.date_bataille, '%d-%m-%Y') AS date_bataille, SUM(prendre_casque.qte) AS nb_casques
 FROM bataille
 INNER JOIN prendre_casque ON bataille.id_bataille = prendre_casque.id_bataille
-LEFT JOIN lieu ON personnage.id_lieu = lieu.id_lieu;
+LEFT JOIN lieu ON bataille.id_lieu = lieu.id_lieu
 WHERE prendre_casque.id_personnage = $id_persoChoisi
 GROUP BY bataille.id_bataille";
 
@@ -79,7 +79,8 @@ if (!$gaulois1) {
 <?php
 
 
-        echo "<h1>$gaulois1['nom_personnage']</h1>";
+        //echo "<h1>."$gaulois1['nom_personnage']."</h1>";
+        echo "<h1>Détails du personnage choisi</h1>";
 
         echo "<table id='table2'>
             <thead>
@@ -135,5 +136,4 @@ if (!$gaulois1) {
     </div>
 </body>
 </html>
-
 
