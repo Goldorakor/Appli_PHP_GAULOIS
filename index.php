@@ -60,9 +60,9 @@ function afficherTableGaulois (array $gaulois) : string {
 
     foreach ($gaulois as $g) {
         $result .= "<tr>
-                        <td><a href='personnage.php'>$gaulois.nom_personnage</a></td>
-                        <td>$gaulois.nom_specialite</td>
-                        <td>$gaulois.nom_lieu</td>
+                        <td><a href='personnage.php'>".$g['nom_personnage']."</a></td>
+                        <td>".$g['nom_specialite']."</td>
+                        <td>".$g['nom_lieu']."</td>
                     </tr>";
     }
 
