@@ -2,7 +2,9 @@
 <?php
 try {
     // connexion à la base de données
-    $mysqlClient = new PDO("mysql:host='localhost'; dbname='gaulois'; charset=utf8", 'root', '');
+    $mysqlClient = new PDO("mysql:host=localhost;dbname=gaulois;charset=utf8",
+	"root",
+	"");
     
 
 } catch (Exception $e) {
@@ -23,10 +25,10 @@ LEFT JOIN lieu ON personnage.id_lieu = lieu.id_lieu";
 // $gauloisStatement = $mysqlClient->prepare($sql); (ne peut pas être exploité seul)
 
 $gauloisStatement = $mysqlClient->prepare($sql);
-$gauloisStatement = $mysqlClient->execute();
+$gauloisStatement->execute();
 $gaulois = $gauloisStatement->fetchAll();
 
-var_dumb ($gaulois);
+var_dump($gaulois);
 
 ?>
 
@@ -71,7 +73,7 @@ function afficherTableGaulois (array $gaulois) : string {
 
 }
 
-echo afficherTableHTML ($gaulois);
+echo afficherTableGaulois($gaulois);
 ?>
 
     </div>
