@@ -60,7 +60,7 @@ function afficherTableGaulois (array $gaulois) : string {
 
     foreach ($gaulois as $g) {
         $result .= "<tr>
-                        <td><a href='personnage.php'>".$g['nom_personnage']."</a></td>
+                        <td><a href='personnage.php?id = $g['id_personnage']'>".$g['nom_personnage']."</a></td>
                         <td>".$g['nom_specialite']."</td>
                         <td>".$g['nom_lieu']."</td>
                     </tr>";
@@ -74,6 +74,9 @@ function afficherTableGaulois (array $gaulois) : string {
 }
 
 echo afficherTableGaulois($gaulois);
+
+// ?id = $g['id_personnage']  un paramètre GET, qui permet de transmettre des informations dans l’URL. Le code <?= $g['id_personnage'] ?> insère dynamiquement la valeur de id_personnage pour chaque Gaulois.
+
 ?>
 
     </div>
