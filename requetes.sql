@@ -25,3 +25,34 @@ LEFT JOIN lieu ON bataille.id_lieu = lieu.id_lieu;
 WHERE prendre_casque.id_personnage = $id_persoChoisi (on sélectionne notre gaulois)
 GROUP BY bataille.id_bataille (on additionne sur la bataille les différents casques ramassés)
 */
+
+
+
+
+
+
+
+/*
+requête pour obtenir les informations souhaitées de la page listePotion.php
+pas besoin de jointures puisque notre table nous fournit les informations nécessaires
+
+SELECT potion.id_potion, potion.nom_potion
+FROM potion
+ORDER BY potion.nom_potion
+*/
+
+
+/*
+requête pour obtenir les informations souhaitées de la page potion.php
+
+SELECT potion.nom_potion
+FROM potion
+ORDER BY potion.nom_potion
+WHERE potion.id_potion = $id_potionChoisie
+
+SELECT ingredient.nom_ingredient, composer.qte, ingredient.cout_ingredient,
+FROM composer
+INNER JOIN potion ON composer.id_potion = potion.id_potion
+INNER JOIN ingredient ON compser.id_ingredient = ingredient.id_ingredient;
+WHERE potion.id_potion = $id_potionChoisie
+*/

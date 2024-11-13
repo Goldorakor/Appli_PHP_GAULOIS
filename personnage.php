@@ -29,14 +29,14 @@ $sql1 = "SELECT personnage.nom_personnage, specialite.nom_specialite, lieu.nom_l
 FROM personnage
 LEFT JOIN specialite ON personnage.id_specialite = specialite.id_specialite
 LEFT JOIN lieu ON personnage.id_lieu = lieu.id_lieu
-WHERE personnage.id_personnage = $id_persoChoisi";
+WHERE personnage.id_personnage = :id";
 
 
 $sql2 = "SELECT bataille.nom_bataille, DATE_FORMAT(bataille.date_bataille, '%d-%m-%Y') AS date_bataille, SUM(prendre_casque.qte) AS nb_casques
 FROM bataille
 INNER JOIN prendre_casque ON bataille.id_bataille = prendre_casque.id_bataille
 LEFT JOIN lieu ON bataille.id_lieu = lieu.id_lieu
-WHERE prendre_casque.id_personnage = $id_persoChoisi
+WHERE prendre_casque.id_personnage = :id
 GROUP BY bataille.id_bataille";
 
 
@@ -47,12 +47,12 @@ GROUP BY bataille.id_bataille";
 // deuxième tableau contient le nom des batailles, la date et le nb de casques pris
 
 $gauloisStatement1 = $mysqlClient->prepare($sql1);
-$gauloisStatement1->execute();
+$gauloisStatement1->execute(["id" => $id_persoChoisi]);
 $gaulois1 = $gauloisStatement1->fetch();
 
 $gauloisStatement2 = $mysqlClient->prepare($sql2);
 $gauloisStatement2->execute();
-$gaulois2 = $gauloisStatement2->fetchAll();
+$gaulois2 = $gauloisStatement2->fetchAll(["id" => $id_persoChoisi]);
 
 var_dump($gaulois1);
 echo "<br>";
@@ -71,7 +71,7 @@ if (!$gaulois1) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails du personnage Gaulois choisi</title>
+    <title>Détails du personnage gaulois choisi</title>
 </head>
 <body>
     <div id='wrapper'>
@@ -136,4 +136,3 @@ if (!$gaulois1) {
     </div>
 </body>
 </html>
-
