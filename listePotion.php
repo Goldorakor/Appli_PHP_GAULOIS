@@ -78,7 +78,7 @@ echo afficherTablePotions($potions);
 /* 
 ?id = ".$potion['id_potion']."  un paramètre GET, qui permet de transmettre des informations dans l’URL.
 Le code <?= $potion['id_potion'] ?> 
-insère dynamiquement la valeur de id_personnage pour chaque potion.
+insère dynamiquement la valeur de id_potion pour chaque potion.
 */
 
 ?>
