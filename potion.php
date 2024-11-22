@@ -35,7 +35,7 @@ $sql2 = "SELECT ingredient.nom_ingredient, composer.qte, ingredient.cout_ingredi
 FROM composer
 INNER JOIN potion ON composer.id_potion = potion.id_potion
 INNER JOIN ingredient ON composer.id_ingredient = ingredient.id_ingredient
-WHERE potion.id_potion = :id";
+WHERE potion.id_potion = :id;
 
 // on procède comme dans index.php : on souhaite récupérer deux tableaux exploitables
 // premier tableau n'a qu'une seule ligne : les informations du personnage choisi
